@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box } from "@chakra-ui/react";
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Dashboard from "./pages/dashboard/dashboard";
+import Login from "./pages/login/login";
+import Logout from "./pages/logout/logout";
+import NotFound from "./pages/notFound/notFound";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box h={"full"}>
+      <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" replace={true} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Box>
   );
-}
+};
 
 export default App;
